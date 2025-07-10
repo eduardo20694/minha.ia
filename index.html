@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Minha IA</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; background: #f0f0f0; }
+    #resposta { margin-top: 20px; font-weight: bold; color: #333; }
+    input, button { padding: 10px; font-size: 16px; }
+  </style>
+</head>
+<body>
+  <h1>Fale com a IA do Eduardo</h1>
+  <input type="text" id="pergunta" placeholder="Digite sua pergunta">
+  <button onclick="enviarPergunta()">Perguntar</button>
+  <div id="resposta"></div>
+
+  <script>
+    async function enviarPergunta() {
+      const pergunta = document.getElementById('pergunta').value;
+      const respostaDiv = document.getElementById('resposta');
+      respostaDiv.innerText = 'Pensando...';
+
+      try {
+        const response = await fetch('https://minhaia-6tfz.onrender.com/pergunta', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ pergunta })
+        });
+
+        const data = await response.json();
+        respostaDiv.innerText = data.resposta;
+      } catch (error) {
+        respostaDiv.innerText = 'Erro ao conectar com a IA.';
+        console.error(error);
+      }
+    }
+  </script>
+</body>
+</html>
