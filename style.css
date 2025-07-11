@@ -1,4 +1,4 @@
-/* Reset básico */
+/* Reset */
 * {
   margin: 0;
   padding: 0;
@@ -10,70 +10,81 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #121212;
+  background: #0e0e0e;
   color: #e0e0e0;
   height: 100vh;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* Container estilo app mobile */
 #app {
-  background: #1e1e1e;
+  background: url('icons/fundo.jpg') no-repeat center center;
+  background-size: cover;
   width: 100%;
-  max-width: 480px;
+  max-width: 430px;
   height: 95vh;
   display: flex;
   flex-direction: column;
-  border-radius: 12px;
+  border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.6);
 }
 
 /* Cabeçalho */
 header {
-  background-color: #075e54;
+  background-color: #0d534d;
   color: white;
   padding: 15px;
   font-size: 18px;
   text-align: center;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  border-bottom: 1px solid #0c3d3a;
 }
 
 /* Área de chat */
 #chat {
   flex: 1;
   overflow-y: auto;
-  padding: 10px;
+  padding: 12px;
   display: flex;
   flex-direction: column;
+  scroll-behavior: smooth;
 }
 
-/* Bolhas de mensagem */
+/* Mensagens */
 .mensagem {
-  max-width: 75%;
+  max-width: 80%;
   margin: 6px 0;
-  padding: 10px 15px;
-  border-radius: 14px;
-  line-height: 1.4;
-  word-wrap: break-word;
+  padding: 10px 14px;
+  border-radius: 20px;
+  line-height: 1.5;
   font-size: 15px;
+  word-break: break-word;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.25);
+  transition: all 0.2s ease;
+   display: inline-block;
 }
 
 .usuario {
   align-self: flex-end;
-  background-color: #2e7d32;
+  background: #128c7e;
   color: white;
+  border-bottom-right-radius: 4px;
 }
 
 .ia {
   align-self: flex-start;
-  background-color: #333;
-  color: #eee;
+  background: #2a2a2a;
+  color: #eaeaea;
+  border-bottom-left-radius: 4px;
 }
 
-/* Área de entrada */
+/* Entrada fixa no rodapé */
 #entrada {
   display: flex;
   padding: 10px;
-  background-color: #222;
+  background-color: #121212;
+  border-top: 1px solid #1e1e1e;
 }
 
 #pergunta {
@@ -82,26 +93,62 @@ header {
   font-size: 15px;
   border: none;
   border-radius: 8px;
-  background: #333;
-  color: #fff;
+  background: #2d2d2d;
+  color: #f1f1f1;
   margin-right: 10px;
+  transition: all 0.2s ease;
+}
+
+#pergunta:focus {
+  outline: none;
+  background: #3a3a3a;
 }
 
 #pergunta::placeholder {
-  color: #aaa;
+  color: #888;
 }
 
 #enviar {
   padding: 10px 16px;
-  background-color: #128c7e;
-  color: white;
+  background-color: #25d366;
+  color: #000;
+  font-weight: bold;
   border: none;
   border-radius: 8px;
   font-size: 15px;
   cursor: pointer;
-  transition: background 0.2s ease;
+  transition: background 0.3s ease;
 }
 
 #enviar:hover {
-  background-color: #0d6e63;
+  background-color: #1dbf57;
 }
+
+.mensagem-container {
+  display: flex;
+  align-items: flex-end;
+  margin: 6px 4px;
+  background: transparent;     /* <-- Garante que não tenha fundo */
+  border: none;
+  box-shadow: none;
+}
+
+
+.mensagem-container.usuario {
+  justify-content: flex-end;
+}
+
+.mensagem-container.ia {
+  justify-content: flex-start;
+}
+
+.avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  margin: 0 8px;
+  object-fit: cover;
+  box-shadow: 0 0 2px #000;
+}
+
+
