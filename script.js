@@ -35,7 +35,7 @@ async function enviarPergunta() {
 
   adicionarMensagem(pergunta, 'usuario');
   input.value = '';
-  input.focus();
+  input.blur();
 
   // Adiciona bolha de "Pensando..."
   const pensandoContainer = document.createElement('div');
