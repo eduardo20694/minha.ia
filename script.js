@@ -56,7 +56,7 @@ async function enviarPergunta() {
   chat.scrollTop = chat.scrollHeight;
 
   try {
-    const response = await fetch('https://web-c5ee1.up.railway.app/pergunta', {
+    const response = await fetch('https://web-production-6507d3.up.railway.app/pergunta', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ pergunta })
